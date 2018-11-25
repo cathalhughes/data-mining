@@ -86,8 +86,8 @@ def split_data(data, test_data):
 
 
 
-data = pd.read_csv('Datasets/relevant_data/cleanedDataset.csv', index_col = 0)
-test_data = pd.read_csv('Datasets/relevant_data/cleanedTestDataset.csv', index_col = 0)
+data = pd.read_csv('Datasets/relevant_data/cleanedDataset_full_no_normalisation.csv', index_col = 0)
+#test_data = pd.read_csv('Datasets/relevant_data/cleanedTestDataset.csv', index_col = 0)
 
 def convert_categorical_variables1(attributes):
 	output = pd.DataFrame(index = attributes.index)
@@ -99,12 +99,12 @@ def convert_categorical_variables1(attributes):
 
 	return output
 
-test = pd.concat([data, test_data], ignore_index=True)
-print(len(test_data))
-data = standardise_data(test)
+#test = pd.concat([data, test_data], ignore_index=True)
+#print(len(test_data))
+#data = standardise_data(data)
 
 # cols = ['HTP', 'ATP', 'HM1_D', 'HM1_D','HM1_D','AM1_D','AM3_L','AM3_W', 'HTGD','ATGD','DiffFormPoints','DiffLP','FTR']
-cols = ['HTP','ATP', 'HM1', 'HM2', 'HM3', 'AM1', 'AM2', 'AM3','HTGD','ATGD','DiffFormPts','DiffLP', 'FTR']
+cols = ['HTP','ATP', 'HM1', 'HM2', 'HM3', 'AM1', 'AM2', 'AM3','HTGD','ATGD','DiffFormPts','DiffPts','DiffLP', 'FTR']
 data = data[cols]
 
 #data = convert_categorical_variables1(data)
@@ -114,5 +114,9 @@ data = data.drop(['HM1', 'HM2', 'HM3', 'AM1', 'AM2', 'AM3'], 1)
 #plt.show()
 print(data)
 
-data.to_csv('Datasets/relevant_data/forBayes2.csv')
+data.to_csv('Datasets/relevant_data/forBayes2_no_normalisation.csv')
+
+'''
+Both of these techniques have their drawbacks. If you have outliers in your data set, normalizing your data will certainly scale the “normal” data to a very small interval. And generally, most of data sets have outliers. When using standardization, your new data aren’t bounded (unlike normalization).
+'''
 

@@ -438,7 +438,7 @@ for mw in points_diff.keys():
 
 
 
-print()
+print(mw_dist[2])
 
 df = pd.DataFrame(mw_dist[2], index=['HomeWins', 'AwayWins', 'Draws'])
 

@@ -485,11 +485,15 @@ playing_stat['DiffFormPts'] = playing_stat['HTFormPts'] - playing_stat['ATFormPt
 playing_stat['DiffLP'] = playing_stat['HomeTeamLP'] - playing_stat['AwayTeamLP']
 
 # Scale DiffPts , DiffFormPts, HTGD, ATGD by Matchweek.
-cols = ['HTGD','ATGD','DiffPts','DiffFormPts','HTP','ATP']
+cols = ['HTGD','ATGD','DiffPts','HTP','ATP']
 playing_stat.MW = playing_stat.MW.astype(float)
 
-for col in cols:
-    playing_stat[col] = playing_stat[col] / playing_stat.MW
+# for col in cols:
+    
+#     playing_stat[col] = playing_stat[col] / playing_stat.MW
+
+
+# playing_stat['DiffFormPts'] = playing_stat['DiffFormPts'] / 9
 
 def only_hw(string):
     if string == 'H':
@@ -502,10 +506,11 @@ def only_hw(string):
 
 print(len(playing_stat))
 
-playing_stat_test = playing_stat[6790:]
-playing_stat = playing_stat[0:6790]
+# playing_stat_test = playing_stat[6790:]
+# playing_stat = playing_stat[0:6790]
 
 
+print(playing_stat)
 
-playing_stat.to_csv(loc + "final_dataset_project_full.csv")
-playing_stat_test.to_csv(loc+"test_project_full.csv")
+playing_stat.to_csv(loc + "final_dataset_project_full_no_normalisation.csv")
+#playing_stat_test.to_csv(loc+"test_project_full_new_normalisation.csv")

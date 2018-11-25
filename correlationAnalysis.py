@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('Datasets/relevant_data/cleanedDataset.csv', index_col = 0)
+data = pd.read_csv('Datasets/relevant_data/cleanedDataset_full_no_normalisation.csv', index_col = 0)
 
 #print(data.info())
 
